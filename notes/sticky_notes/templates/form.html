@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- my_template.html -->
+<!-- <form action="{% url 'create_note' pk=pk%}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form> -->
+
+    <div class="header darkmode-ignore" id="header">
+        <div class="container">
+            <div class="col-md-3 col-sm-5">
+                <a href="{% url 'home' %}">
+                    <h2>Sticky Notes</h2>
+                </a>
+            </div>
+            <div class="col-md-6 col-md-push-3 col-sm-7">
+                <div class="hold-img">
+                    <img src="{% static 'img/Group 10.svg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="notes" class="notes">
+        <div class="container">
+            <!--Search bar-->
+            <div class="searchBar">
+                <form action="{% url 'home' %}" id="searchForm">
+                    <div class="col-xs-11 nopadding">
+                        <input type="text" placeholder="Search Note" name="search_term" value="{{ search_term }}">
+                    </div>
+                    <div class="col-xs-1 nopadding">
+                        <button type="submit" id="searchBtn"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Check if the request is trying to search or just a normal GET-->
+            <!-- {% if is_searching %}
+                <section>
+                    <div class="container text-center" style="display: flex; justify-content: center">
+                        <div class="col-md-3 col-sm-5">
+                            <h2><small>Search results for '{{ search_term }}'</small></h2>
+                            <h2><small>Total notes match: {{ notes.count }}</small></h2>
+                        </div>
+                    </div>
+                    {% if notes %}
+                        <div id="all-notes" class="all-notes">
+                            {% include 'partials/_all_notes.html' %}
+                        </div>
+                    {% else %}
+                        <div class="container text-center"
+                             style="display: flex; justify-content: center; margin-bottom: 50px;">
+                            <div class="col-md-3 col-sm-5">
+                                <h2><small>No note match this search query.</small></h2>
+                            </div>
+                        </div>
+                    {% endif %}
+                </section>
+
+            {% else %} -->
+                <!--Request is not for search but a normal GET-->
+
+                <!--Create new note-->
+                <!-- <form action="{% url 'create_note' pk=pk%}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Submit</button>
+                </form> -->
+                <div id="noteCreator" class="col-md-4 col-sm-6">
+
+                    <div id="bg" class="single-note add-note white">
+                        <form action="{% url 'create_note' pk=pk%}" method="POST">
+                            <!-- <input type="hidden" class="d-none" name="new_dummy" id="id_new_dummy"> -->
+                            {% csrf_token %}
+                            <input name="heading" type="text" maxlength="20" placeholder="Type a title ..." value="{{ form.initial.heading }}">
+                            <small>Today: {% now "jS F, Y" %}</small>
+                            <hr>
+                            <textarea name="note" placeholder="Type a description ..." >{{ form.initial.note }}</textarea>
+                            <div class="meta">
+                                <span id="palette"><i class="fas fa-palette"></i></span>
+                                <span>
+                                <button class="mark btn btn-lg" type="submit" name="create_btn" id="create_btn">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </span>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+

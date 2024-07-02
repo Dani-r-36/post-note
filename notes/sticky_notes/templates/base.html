@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}Sticky Notes{% endblock title %}
+    </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta property="og:image" content="{% static 'img/logo-128.png' %}"/>
+    <meta property="og:title" content="{% block head_title %}Sticky Notes{% endblock head_title %}"/>
+    <meta property="og:description" content="Create and share colorful todo notes"/>
+    <meta property="og:image:width" content="265">
+    <meta property="og:image:height" content="265">
+    <meta property="og:site_name" content="Sticky Notes">
+    <meta property="og:site_author" content="Oshodi Kolapo">
+    <meta property="og:author" content="Oshodi Kolapo">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+
+
+    <!-- Stylesheets -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/reset.css' %}" type="text/css" rel="stylesheet">
+
+    <link href="{% static 'css/all.css' %}" type="text/css" rel="stylesheet"> <!-- FontAwesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css"/>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <link href="{% static 'css/stickyNotes.css' %}" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+
+
+{% block content %}
+    <!-- content -->
+
+{% endblock %}
+
+
+<footer>
+    <div class="container">
+        <span>Made With Depression<br><i class="fas fa-heart"></i> 
+        </span>
+    </div>
+</footer>
+
+<!-- Javascript files -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.6/lib/darkmode-js.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/js/OverlayScrollbars.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+<script>
+    const options = {
+        backgroundColor: '#EFEFEF',  // default: '#fff'
+    }
+    new Darkmode(options).showWidget();
+
+    new ClipboardJS('#link');
+
+</script>
+<script src="{% static 'js/stickyNotes.js' %}" charset="utf-8"></script>
+</body>
+</html>
